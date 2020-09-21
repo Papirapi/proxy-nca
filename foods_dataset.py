@@ -17,4 +17,4 @@ for f in files:
 data = pd.DataFrame(img_paths)
 
 data[1]=(np.divmod(np.arange(len(data)),100)[0]+1)-1
-data.to_csv('/content/food.csv',index=False)
+data.to_csv('/content/proxy-nca/foods/food.csv',index=False)
