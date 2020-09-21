@@ -12,7 +12,7 @@ for r, d, f in os.walk(path):
             files.append(os.path.join(r, file))
 
 for f in files:
-    d = (f.split("/",4)[-1])
+    d = (f.split("/",5)[-1])
     img_paths.append(d)
 data = pd.DataFrame(img_paths)
 
