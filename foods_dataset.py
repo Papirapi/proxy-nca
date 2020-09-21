@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 
-path = "/content/foods/images"
+path = "/content/proxy-nca/foods/images"
 img_paths = []
 files = []
 # r=root, d=directories, f = files
