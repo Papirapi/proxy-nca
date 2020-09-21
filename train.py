@@ -42,7 +42,7 @@ parser.add_argument('--sz-batch', default = 32, type = int,
     dest = 'sz_batch',
     help = 'Number of samples per batch.'
 )
-parser.add_argument('--epochs', default = 70, type = int,
+parser.add_argument('--epochs', default = 30, type = int,
     dest = 'nb_epochs',
     help = 'Number of training epochs.'
 )
@@ -52,7 +52,7 @@ parser.add_argument('--log-filename', default = 'example',
 parser.add_argument('--gpu-id', default = 8, type = int,
     help = 'ID of GPU that is used for training.'
 )
-parser.add_argument('--workers', default = 4, type = int,
+parser.add_argument('--workers', default = 16, type = int,
     dest = 'nb_workers',
     help = 'Number of workers for dataloader.'
 )
@@ -67,7 +67,7 @@ parser.add_argument('--scaling-x', default = 1., type = float,
 parser.add_argument('--scaling-p', default = 3., type = float,
     help = 'Scaling factor for the normalized proxies.'
 )
-parser.add_argument('--lr-proxynca', default = 1., type = float,
+parser.add_argument('--lr-proxynca', default = 0.1, type = float,
     help = 'Learning rate for proxynca.'
 )
 
