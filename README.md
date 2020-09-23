@@ -3,16 +3,10 @@
 
 This repository contains a PyTorch implementation of [*No Fuss Distance Metric Learning using Proxies*](https://arxiv.org/pdf/1703.07464.pdf) as introduced by Google Research.
 
-
-# Reproducing Results
-
 The adjustment of most training settings (learning rate, optimizer, criterion, dataset, ...) in the config file. 
 
 Since the training has been done on Google Colab, Spec: Nvidia K80 / T4, GPU memory : 12GB, Performance : 4.1 TFLOPS / 8.1 TFLOPS.
 
-## Downloading and Extracting the Datasets
-
-In this task, UPMC-G20 dataset (gaze for UPMC Food-101) was used. For more details : http://visiir.lip6.fr/
 
 ## [Cars_196 , CUB 200-2011 , SOP]
 ```
