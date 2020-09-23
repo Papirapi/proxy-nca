@@ -59,7 +59,7 @@ Since the UPMC-G20 dataset contains only 20 classes, and since in the ‘No Fuss
 half of the classes has used for train and half for the evaluation.<br/>
 10 classes were used for training (50%) and 10 classes for evaluation (50%).<br/>
 Such low number of classes impact the value of NMI that can be found in the Results section.<br/>
-(Explanation: The number of classes is small for working with Distance Metric Learning like has been done with Cars_196, CUB 200-2011, SOP.<br/>
+(Explanation: The number of classes is small for working with Distance Metric Learning like has been done with Cars_196, CUB 200-2011, SOP.
 Also, the inner-class variation is quite large when compared with the intra-class variation.)<br/>
 Most of the training parameters can be adjusted in the config file. <br/>
 (config.json file contains the best selected parameters after many tries).<br/>
