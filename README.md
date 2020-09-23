@@ -14,9 +14,9 @@ You can head to the Proxy-nca ( https://github.com/dichotomies/proxy-nca ) to fo
 ```
 ## Dataset
 
-UPMC-G20 is a dataset based on the UPMC Food-101 with gaze annotation. 
-We selected 20 food categories and 100 images per category from the UPMC Food-101. 
-For each image, we collected about 15 fixations across 3 subjects with a total duration of 2.5 seconds. 
+UPMC-G20 is a dataset based on the UPMC Food-101 with gaze annotation.<br/>
+We selected 20 food categories and 100 images per category from the UPMC Food-101.<br/>
+For each image, we collected about 15 fixations across 3 subjects with a total duration of 2.5 seconds.<br/> 
 The categories selected are apple-pie, bread-pudding, beef-carpaccio, beet-salad, chocolate-cake, 
 chocolate-mousse, donuts, beignets, eggs-benedict, croque-madame, gnocchi, shrimp-and-grits, grilled-salmon,
 pork-chop, lasagna, ravioli, pancakes, french-toast, spaghetti-bolognese, pad-thai.
@@ -36,7 +36,7 @@ cd ..
 python3 foods_dataset.py
 
 
-PS: This repo has been edited from orignal proxy-nca (dichotomies) and training has been done on Google Colab:
+PS:This repo has been edited from orignal proxy-nca (dichotomies) and training has been done on Google Colab:
 Paths has been edited for colab use, if you want to replicated the training on another environment please 
 consider chanigng the paths.
 
@@ -56,13 +56,13 @@ DATA=foods; SCALING_X=3.0; SCALING_P=3.0; LR=0.01; python3 train.py --data $DATA
 ## Training
 
 Since the UPMC-G20 dataset contains only 20 classes, and since in the ‘No Fuss Distance Metric Learning Using Proxies’ 
-half of the classes has used for train and half for the evaluation.
-10 classes were used for training (50%) and 10 classes for evaluation (50%).
-Such low number of classes impact the value of NMI that can be found in the Results section.
-(Explanation: The number of classes is small for working with Distance Metric Learning like has been done with Cars_196, CUB 200-2011, SOP.
-Also, the inner-class variation is quite large when compared with the intra-class variation.)
-Most of the training parameters can be adjusted in the config file. 
-(config.json file contains the best selected parameters after many tries).
+half of the classes has used for train and half for the evaluation.<br/>
+10 classes were used for training (50%) and 10 classes for evaluation (50%).<br/>
+Such low number of classes impact the value of NMI that can be found in the Results section.<br/>
+(Explanation: The number of classes is small for working with Distance Metric Learning like has been done with Cars_196, CUB 200-2011, SOP.<br/>
+Also, the inner-class variation is quite large when compared with the intra-class variation.)<br/>
+Most of the training parameters can be adjusted in the config file. <br/>
+(config.json file contains the best selected parameters after many tries).<br/>
 The training duration was about 12~13min.
 
 ## Results
@@ -85,7 +85,7 @@ Reading: This Implementation [[Google's Implementation](https://arxiv.org/pdf/17
 
 
 # Referencing this Implementation:
-I did not contribute to this work, I just run training on a different dataset from previous used one.
+I did not contribute to this work, I just run training on a different dataset from previous used one.<br/>
 If you'd like to reference this ProxyNCA implementation, you can use this bibtex:
  
 ```
