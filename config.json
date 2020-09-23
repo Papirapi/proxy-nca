@@ -1,0 +1,74 @@
+{
+    "name": "str('example')",
+    "gpu_id": "int(0)",
+    "dataset": {
+        "cub": {
+            "classes": {
+                "train": "range(0, 100)",
+                "eval": "range(100, 200)"
+            },
+            "root": "str('/export/home/vtschern/data/cub-200-2011')"
+        },
+        "cars": {
+            "classes": {
+                "train": "range(0, 98)",
+                "eval": "range(98, 196)"
+            },
+            "root": "str('/export/home/vtschern/data/cars196')"
+        },
+        "foods": {
+            "classes": {
+                "train": "range(0, 9)",
+                "eval": "range(10, 20)"
+            },
+            "root": "str('/content/proxy-nca/foods/images/')"
+        },
+        "sop": {
+            "classes": {
+                "train": "range(0, 11318)",
+                "eval": "range(11318, 22634)"
+            },
+            "root": "str('/export/home/vtschern/data/sop')"
+        }
+    },
+    "transform_parameters": {
+        "rgb_to_bgr": "True", 
+        "intensity_scale": "[[0, 1], [0, 255]]",
+        "mean": "[104, 117, 128]",
+        "std": "[1, 1, 1]"
+    },
+    "criterion": {
+        "type": "proxynca.ProxyNCA",
+        "args": {
+            "smoothing_const": "0.1",
+            "scaling_x": "3",
+            "scaling_p": "3"
+        }
+    },
+    "lr_scheduler": {
+        "type": "torch.optim.lr_scheduler.ExponentialLR",
+        "args": {
+            "gamma": "0.1"
+        }
+    },
+    "opt": {
+        "type": "torch.optim.Adam",
+        "args": {
+            "embedding": {
+                "weight_decay": "0.0005"
+            },
+            "backbone": {
+                "weight_decay": "0.0005"
+            },
+            "proxynca": {
+                "weight_decay": "0.0005",
+                "lr": "0.001"
+            },
+            "base": {
+                "lr": "0.001",
+                "lr": "0.001",
+                "eps": "0.01"
+            }
+        }
+    }
+}
