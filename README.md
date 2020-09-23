@@ -3,94 +3,92 @@
 
 This repository contains a PyTorch implementation of [*No Fuss Distance Metric Learning using Proxies*](https://arxiv.org/pdf/1703.07464.pdf) as introduced by Google Research.
 
-The training and evaluation setup is exactly the same as described in the paper, except that Adam was used as optimizer instead of RMSprop.
-
-I have ported the [PyTorch BN-Inception model from PyTorch 0.2](https://github.com/Cadene/pretrained-models.pytorch) to PyTorch >= 0.4. It's weights are stored inside the repository in the directory `net`.
-
-You need Python3, PyTorch >= 1.1 and torchvision >= 0.3.0 to run the code. I have used CUDA Version 10.0.130.
-
-Note that negative log with softmax is used as ProxyNCA loss. Therefore, the anchor-positive-proxy distance is not excluded in the denominator. In practice, I have not noticed a difference.
-
-The importance of scaling of the normalized proxies and embeddings is mentioned in the ProxyNCA paper (in the theoretical background), but the exact scaling factors are ommitted. I have found that (3, 3) work well for CUB and Cars and (8, 1) work well for SOP (first being for proxies and latter for embeddings).
 
 # Reproducing Results
 
-You can adjust most training settings (learning rate, optimizer, criterion, dataset, ...) in the config file. 
+The adjustment of most training settings (learning rate, optimizer, criterion, dataset, ...) in the config file. 
 
-You'll only have to adjust the root paths for the datasets. Then you're ready to go.
+Since the training has been done on Google Colab, Spec: Nvidia K80 / T4, GPU memory : 12GB, Performance : 4.1 TFLOPS / 8.1 TFLOPS.
 
 ## Downloading and Extracting the Datasets
 
-### [Cars 196](https://ai.stanford.edu/~jkrause/cars/car_dataset.html)
+In this task, UPMC-G20 dataset (gaze for UPMC Food-101) was used. For more details : http://visiir.lip6.fr/
+
+## [Cars_196 , CUB 200-2011 , SOP]
+```
+You can head to the Proxy-nca ( https://github.com/dichotomies/proxy-nca ) to follow train instractions
+```
+## Dataset
+
+UPMC-G20 is a dataset based on the UPMC Food-101 with gaze annotation. 
+We selected 20 food categories and 100 images per category from the UPMC Food-101. 
+For each image, we collected about 15 fixations across 3 subjects with a total duration of 2.5 seconds. 
+The categories selected are apple-pie, bread-pudding, beef-carpaccio, beet-salad, chocolate-cake, 
+chocolate-mousse, donuts, beignets, eggs-benedict, croque-madame, gnocchi, shrimp-and-grits, grilled-salmon,
+pork-chop, lasagna, ravioli, pancakes, french-toast, spaghetti-bolognese, pad-thai.
+
+Link : http://visiir.lip6.fr/
+
+### [UPMC-G20](http://visiir.lip6.fr/)
 
 ```
-mkdir cars196
-cd cars196
-wget http://imagenet.stanford.edu/internal/car196/cars_annos.mat
-wget http://imagenet.stanford.edu/internal/car196/car_ims.tgz
-tar -xzvf car_ims.tgz
-pwd # use this path as root path for config file
+git clone 'https://github.com/Papirapi/proxy-nca.git'
+cd proxy-nca
+mkdir foods
+cd foods
+wget 'http://visiir.lip6.fr/data/public/Gaze_UPMC_Food20.zip'
+!unzip Gaze_UPMC_Food20.zip
+cd ..
+python3 foods_dataset.py
+
+PS: This repo has been edited from orignal proxy-nca (dichotomies) and training has been done on Google Colab: 
+https://colab.research.google.com/drive/1orzykB4Gf8ly1pYdzSgGEV9h7h_McnCl?usp=sharing
+Paths has been edited for colab use, if you want to replicated the training on another environment please 
+consider chaning the paths.
 ```
 
-### [CUB 200-2011](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html)
-```
-wget http://www.vision.caltech.edu/visipedia-data/CUB-200-2011/CUB_200_2011.tgz
-tar -xzvf CUB_200_2011.tgz
-cd CUB_200_2011
-pwd # use this path as root path for config file
-```
-
-### [SOP](https://cvgl.stanford.edu/projects/lifted_struct/)
-
-```
-wget ftp://cs.stanford.edu/cs/cvgl/Stanford_Online_Products.zip
-unzip Stanford_Online_Products.zip
-cd Stanford_Online_Products
-pwd # use this path as root path for config file
-```
 
 ## Commands
 
 ```
-DATA=cub; SCALING_X=3.0; SCALING_P=3.0; LR=1; python3 train.py --data $DATA \
+DATA=foods; SCALING_X=3.0; SCALING_P=3.0; LR=0.01; python3 train.py --data $DATA \
 --log-filename $DATA-scaling_x_$SCALING_X-scaling_p_$SCALING_P-lr_$LR \
 --config config.json --epochs=20 --gpu-id 0 --lr-proxynca=$LR \
 --scaling-x=$SCALING_X --scaling-p=$SCALING_P --with-nmi
 ```
+## Training
 
-```
-DATA=cars; SCALING_X=3.0; SCALING_P=3.0; LR=1; python3 train.py --data $DATA \
---log-filename $DATA-scaling_x_$SCALING_X-scaling_p_$SCALING_P-lr_$LR \
---config config.json --epochs=50 --gpu-id 1 --lr-proxynca=$LR \
---scaling-x=$SCALING_X --scaling-p=$SCALING_P --with-nmi
-```
-
-```
-DATA=sop; SCALING_X=1; SCALING_P=8; LR=10; python3 train.py --data $DATA \
---log-filename $DATA-scaling_x_$SCALING_X-scaling_p_$SCALING_P-lr_$LR \
---config config.json --epochs=50 --gpu-id 3 --lr-proxynca=$LR \
---scaling-x=$SCALING_X --scaling-p=$SCALING_P
-```
+Since the UPMC-G20 dataset contains only 20 classes, and since in the ‘No Fuss Distance Metric Learning Using Proxies’ 
+half of the classes has used for train and half for the evaluation.
+10 classes were used for training (50%) and 10 classes for evaluation (50%).
+Such low number of classes impact the value of NMI that can be found in the Results section.
+(Explanation: The number of classes is small for working with Distance Metric Learning like has been done with Cars_196, CUB 200-2011, SOP.
+Also, the inner-class variation is quite large when compared with the intra-class variation.)
+Most of the training parameters can be adjusted in the config file. 
+(config.json file contains the best selected parameters after many tries).
+The training duration was about 12~13min.
 
 ## Results
 
-The results were obtained mostly with one Titan X or a weaker GPU.
+The results were obtained mostly with one Colab GPU with the following specs:
+Nvidia K80 / T4, GPU memory : 12GB, Performance : 4.1 TFLOPS / 8.1 TFLOPS.
 
 Reading: This Implementation [[Google's Implementation](https://arxiv.org/pdf/1703.07464.pdf)].
 
-|          | CUB               | Cars              | SOP                 |
-| -------- | ----------------- | ----------------- | ------------------- |
-| Duration | 00:19h            | 00:24h            | 01:55h              |
-| Epoch    | 17                | 15                | 16                  |
-| Log      | [here](https://github.com/dichotomies/proxy-nca/blob/master/log/cub-scaling_x_3.0-scaling_p_3.0-lr_1.log)              | [here](https://github.com/dichotomies/proxy-nca/blob/master/log/cars-scaling_x_3.0-scaling_p_3.0-lr_1.log)              | [here](https://github.com/dichotomies/proxy-nca/blob/master/log/sop-scaling_x_1-scaling_p_8-lr_10.log)                |
-| R@1      | **52.63** [49.21] | 72.19 [**73.22**] | **74.07** [73.73]   |
-| R@2      | **64.63** [61.90] | 81.31 [**82.42**] | 79.13 [-------]     |
-| R@4      | **75.76** [67.90] | **87.54** [86.36] | 83.30 [-------]     |
-| R@8      | **84.52** [72.40] | **92.54** [88.68] | 86.66 [-------]     |
-| NMI      | **60.64** [59.53] | 62.45 [**64.90**] | ----------          |
+|          | CUB               |
+| -------- | ----------------- |
+| Duration | 12:00 min         |
+| Epoch    | 17                |
+| Log      | [Link](https://github.com/Papirapi/proxy-nca/blob/master/log/foods-scaling_x_3.0-scaling_p_3.0-lr_0.01.log)| 
+| R@1      | **38.100**        |
+| R@2      | **55.900**        |
+| R@4      | **70.900**        |
+| R@8      | **82.300**        |
+| NMI      | **24.365**        |
 
-# Referencing this Implementation
 
+# Referencing this Implementation:
+I did not contribute to this work, I just run training on a different dataset from previous used one.
 If you'd like to reference this ProxyNCA implementation, you can use this bibtex:
  
 ```
