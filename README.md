@@ -37,7 +37,7 @@ python3 foods_dataset.py
 
 PS: This repo has been edited from orignal proxy-nca (dichotomies) and training has been done on Google Colab:
 ```
-[Google Colab implementation](#https://colab.research.google.com/drive/1orzykB4Gf8ly1pYdzSgGEV9h7h_McnCl?usp=sharing)
+[Google Colab implementation](https://colab.research.google.com/drive/1orzykB4Gf8ly1pYdzSgGEV9h7h_McnCl?usp=sharing)
 ```
 Paths has been edited for colab use, if you want to replicated the training on another environment please 
 consider chaning the paths.
