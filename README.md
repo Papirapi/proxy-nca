@@ -35,8 +35,10 @@ wget 'http://visiir.lip6.fr/data/public/Gaze_UPMC_Food20.zip'
 cd ..
 python3 foods_dataset.py
 
-PS: This repo has been edited from orignal proxy-nca (dichotomies) and training has been done on Google Colab: 
+PS: This repo has been edited from orignal proxy-nca (dichotomies) and training has been done on Google Colab:
+```
 [Google Colab implementation](#https://colab.research.google.com/drive/1orzykB4Gf8ly1pYdzSgGEV9h7h_McnCl?usp=sharing)
+```
 Paths has been edited for colab use, if you want to replicated the training on another environment please 
 consider chaning the paths.
 ```
