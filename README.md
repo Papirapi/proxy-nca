@@ -98,3 +98,14 @@ If you'd like to reference this ProxyNCA implementation, you can use this bibtex
   howpublished = {\url{https://github.com/dichotomies/proxy-nca}},
 }
 ```
+
+
+# How unlabelled data can be incorporated into proxy learning as was pioneered by Ren et al. for episodic meta learning?
+(https://arxiv.org/abs/1803.00676) 
+
+# MORE : 
+A new CVPR paper 'Proxy Anchor Loss for Deep Metric Learning' by Sungyeon. et Al ( https://arxiv.org/pdf/2003.13911.pdf )<br/>
+Github repo : https://github.com/tjddus9597/Proxy-Anchor-CVPR2020 <br/>
+This paper presents a new proxy-based loss that takes advantages of both pair- and proxy-based methods and overcomes their limitations.<br/>
+Adv: + reducing training complexity & + Rich and fine-grained <br/>
+Overcoming limitations: - impoverished information & Demanding high training complexity
