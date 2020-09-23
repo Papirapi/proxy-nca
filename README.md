@@ -103,6 +103,12 @@ If you'd like to reference this ProxyNCA implementation, you can use this bibtex
 # How unlabelled data can be incorporated into proxy learning as was pioneered by Ren et al. for episodic meta learning?
 (https://arxiv.org/abs/1803.00676) 
 
+First consider a simple way of leveraging ***unlabeled examples*** for refining prototypes.<br/>
+Viewing each prototype as a cluster center, the refinement process could attempt to adjust the cluster locations to better fit the examples in both the support S and ***unlabeled set***.<br/>
+Cluster assignments of the labeled examples in the support set S are considered known and fixed to each example’s label.<br/>
+The refinement process must instead estimate the cluster assignments of the ***unlabeled examples*** and adjust the cluster locations (prototypes) accordingly.<br/>
+
+
 # MORE : 
 A new CVPR paper 'Proxy Anchor Loss for Deep Metric Learning' by Sungyeon. et Al ( https://arxiv.org/pdf/2003.13911.pdf )<br/>
 Github repo : https://github.com/tjddus9597/Proxy-Anchor-CVPR2020 <br/>
