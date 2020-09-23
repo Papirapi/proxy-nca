@@ -56,8 +56,8 @@ DATA=foods; SCALING_X=3.0; SCALING_P=3.0; LR=0.01; python3 train.py --data $DATA
 ## Training
 
 Since the UPMC-G20 dataset contains only 20 classes, and since in the ‘No Fuss Distance Metric Learning Using Proxies’ 
-half of the classes has used for train and half for the evaluation.<br/>
-10 classes were used for training (50%) and 10 classes for evaluation (50%).<br/>
+used half of the classes for train and the otherhalf for the evaluation.<br/>
+In our case, 10 classes were used for training (50%) and 10 classes for evaluation (50%).<br/>
 Such low number of classes impact the value of NMI that can be found in the Results section.<br/>
 (Explanation: The number of classes is small for working with Distance Metric Learning like has been done with Cars_196, CUB 200-2011, SOP.
 Also, the inner-class variation is quite large when compared with the intra-class variation.)<br/>
