@@ -70,12 +70,12 @@ The training duration was about 12~13min.
 The results were obtained mostly with one Colab GPU with the following specs:
 Nvidia K80 / T4, GPU memory : 12GB, Performance : 4.1 TFLOPS / 8.1 TFLOPS.
 
-Reading: This Implementation [[Google's Implementation](https://arxiv.org/pdf/1703.07464.pdf)].
+Reading: This Implementation [Link](https://arxiv.org/pdf/1703.07464.pdf)].
 
 |          | CUB               |
 | -------- | ----------------- |
 | Duration | 12:00 min         |
-| Epoch    | 17                |
+| Epoch    | 20                |
 | Log      | [Link](https://github.com/Papirapi/proxy-nca/blob/master/log/foods-scaling_x_3.0-scaling_p_3.0-lr_0.01.log)| 
 | R@1      | **38.100**        |
 | R@2      | **55.900**        |
