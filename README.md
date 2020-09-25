@@ -72,7 +72,7 @@ Nvidia K80 / T4, GPU memory : 12GB, Performance : 4.1 TFLOPS / 8.1 TFLOPS.
 
 Reading: This Implementation [Link](https://arxiv.org/pdf/1703.07464.pdf)].
 
-|          | CUB               |
+|          | UPMC-G20          |
 | -------- | ----------------- |
 | Duration | 12:00 min         |
 | Epoch    | 20                |
