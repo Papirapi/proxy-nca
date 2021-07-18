@@ -17,9 +17,9 @@ You can head to the Proxy-nca ( https://github.com/dichotomies/proxy-nca ) to fo
 UPMC-G20 is a dataset based on the UPMC Food-101 with gaze annotation.<br/>
 We selected 20 food categories and 100 images per category from the UPMC Food-101.<br/>
 For each image, we collected about 15 fixations across 3 subjects with a total duration of 2.5 seconds.<br/> 
-The categories selected are apple-pie, bread-pudding, beef-carpaccio, beet-salad, chocolate-cake, 
-chocolate-mousse, donuts, beignets, eggs-benedict, croque-madame, gnocchi, shrimp-and-grits, grilled-salmon,
-pork-chop, lasagna, ravioli, pancakes, french-toast, spaghetti-bolognese, pad-thai.
+The categories selected are Apple-pie, Bread-pudding, Beef-carpaccio, Beet-salad, Chocolate-cake, 
+Chocolate-mousse, Donuts, Beignets, Eggs-benedict, Croque-madame, Gnocchi, Shrimp-and-grits, Grilled-salmon,
+Pork-chop, Lasagna, Ravioli, Pancakes, French-toast, Spaghetti-bolognese, Pad-thai.
 
 Link : http://visiir.lip6.fr/
 
